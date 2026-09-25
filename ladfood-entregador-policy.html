@@ -63,8 +63,8 @@
         <li>
           É coletada somente com uma rota em andamento e depois que você toca em "Concordo, ligar
           localização" na tela que mostra o nome da loja. O aceite fica registrado no aparelho e
-          vale para as próximas rotas <strong>da mesma loja</strong>. Uma rota de outra loja pede um
-          novo aceite.
+          vale para as próximas rotas <strong>da mesma loja</strong> (identificada pelo cadastro dela
+          no LadFood). Uma rota de outra loja pede um novo aceite.
         </li>
         <li>
           Continua em segundo plano, enquanto você usa outros aplicativos, por meio de um serviço
@@ -198,14 +198,13 @@
       que o link expira, ele deixa de aceitar marcações e posições, mas continua mostrando a rota.
     </li>
     <li>
-      <strong>Token de notificações:</strong> o aplicativo o renova a cada rota. Ele é apagado
-      depois de 90 dias sem uso, quando o Firebase recusa uma notificação por token inválido (por
+      <strong>Token de notificações:</strong> o aplicativo o renova a cada rota em andamento que
+      você abre. Ele é apagado depois de 90 dias sem uso, quando o Firebase recusa uma notificação por token inválido (por
       exemplo, depois que o aplicativo é desinstalado) ou a seu pedido.
     </li>
     <li>
-      <strong>Registros técnicos de acesso:</strong> pelo tempo necessário para segurança e
-      diagnóstico, respeitado o prazo exigido pelo art. 15 do Marco Civil da Internet (Lei nº
-      12.965/2014).
+      <strong>Registros técnicos de acesso:</strong> guardados por curto período no servidor, somente
+      para segurança e diagnóstico.
     </li>
     <li>
       <strong>No aparelho:</strong> o link da rota é apagado quando você fecha a rota. O aceite
