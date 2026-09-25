@@ -38,9 +38,10 @@
     <strong>Resumo sobre localização:</strong> o LadFood Entregador coleta a localização do
     aparelho <strong>inclusive em segundo plano</strong> (por exemplo, com o Waze ou o Google Maps
     na frente), <strong>somente enquanto uma rota está em andamento</strong> e depois que você
-    aceita na tela "Localização durante a rota". Uma notificação fixa "Rota em andamento" fica
-    visível o tempo todo em que a localização está ligada, e você pode desligá-la a qualquer
-    momento. A localização vai para a loja que enviou a rota e não é usada para publicidade.
+    aceita, para aquela loja, a tela "Localização durante a rota". Com as notificações do
+    aplicativo permitidas, um aviso fixo "Rota em andamento" fica visível enquanto a localização
+    está ligada. Você pode desligar a localização numa rota ou retirar o aceite a qualquer momento.
+    A localização vai para a loja que enviou a rota e não é usada para publicidade.
   </div>
 
   <h2>1. Quem é responsável pelos dados</h2>
@@ -48,7 +49,9 @@
     A loja (restaurante) que envia a rota é quem decide acompanhar as entregas e é a
     <strong>controladora</strong> dos dados da rota e da localização do entregador. A LAD é a
     <strong>operadora</strong>: fornece o aplicativo, o servidor LadFood e o suporte técnico, e trata
-    os dados em nome da loja, somente para prestar esse serviço.
+    os dados em nome da loja, somente para prestar esse serviço. Para os registros técnicos de
+    acesso e os identificadores de notificação (seção 2), que a LAD usa para a segurança e o
+    funcionamento do próprio serviço, a LAD atua como controladora.
   </p>
 
   <h2>2. Dados tratados</h2>
@@ -59,29 +62,40 @@
       <ul>
         <li>
           É coletada somente com uma rota em andamento e depois que você toca em "Concordo, ligar
-          localização". O aceite fica registrado no aparelho e vale para as próximas rotas abertas
-          nele.
+          localização" na tela que mostra o nome da loja. O aceite fica registrado no aparelho e
+          vale para as próximas rotas <strong>da mesma loja</strong>. Uma rota de outra loja pede um
+          novo aceite.
         </li>
         <li>
           Continua em segundo plano, enquanto você usa outros aplicativos, por meio de um serviço
-          em primeiro plano com a notificação fixa "Rota em andamento".
+          em primeiro plano. Se você permitir as notificações do aplicativo, o aviso fixo "Rota em
+          andamento" fica visível na barra de notificações. Sem essa permissão, o Android mostra o
+          serviço apenas no gerenciador de tarefas.
         </li>
         <li>
-          Para sozinha quando a rota é finalizada, cancelada pela loja ou quando o link da rota
-          expira. Também para quando você toca em "Desligar localização" ou retira a permissão
-          nas configurações do Android.
+          Para assim que o aplicativo percebe que a rota foi finalizada, cancelada pela loja ou
+          expirou (no próximo envio de posição ou ao abrir o aplicativo). Se ninguém finalizar a
+          rota, o link expira 72 horas depois da saída. Posições lidas depois do fim da rota são
+          descartadas. A coleta também para quando você toca em "Desligar localização" (vale para a
+          rota atual), retira o aceite ou retira a permissão nas configurações do Android.
         </li>
       </ul>
+    </li>
+    <li>
+      <strong>Sua identificação enviada pela loja:</strong> nome, telefone e código do seu cadastro
+      de entregador no sistema da loja. A rota e as posições ficam associadas a eles, e o nome
+      aparece no aplicativo e na página da rota.
     </li>
     <li>
       <strong>Registro das entregas:</strong> a marcação de cada parada (entregue, não entregue ou
       desfeita), o motivo que você digitar (opcional) e a finalização da rota.
     </li>
     <li>
-      <strong>Dados técnicos para notificações:</strong> o identificador de notificações do aparelho
-      (token do Firebase Cloud Messaging), o identificador de instalação gerado pelo Firebase, a
-      plataforma (Android) e a versão do aplicativo. Ficam associados à loja e ao seu cadastro de
-      entregador no sistema LadFood, para avisar você quando a loja enviar uma rota nova.
+      <strong>Dados técnicos para notificações:</strong> o token de notificações do aparelho
+      (Firebase Cloud Messaging), a plataforma (Android) e a versão do aplicativo. Ficam associados
+      à loja e ao seu cadastro de entregador no sistema LadFood, para avisar você quando a loja
+      enviar uma rota nova. O Firebase também gera um identificador de instalação, usado apenas
+      pelo Google para entregar as notificações.
     </li>
     <li>
       <strong>Registros técnicos de acesso</strong> do servidor (endereço IP, data e hora e endereço
@@ -107,7 +121,11 @@
   <ul>
     <li>
       Mostrar à loja, no mapa do sistema LadFood, a posição mais recente do entregador durante a
-      rota. O histórico de posições (trilha) fica guardado pelo prazo da seção 7.
+      rota.
+    </li>
+    <li>
+      Guardar o histórico de posições (trilha) pelo prazo da seção 7, para esclarecer dúvidas ou
+      contestações sobre entregas quando a loja ou o entregador pedirem.
     </li>
     <li>Registrar as entregas feitas e a finalização da rota.</li>
     <li>Avisar o entregador, por notificação, de uma rota nova.</li>
@@ -122,9 +140,11 @@
     Cabe à loja, como controladora, definir a base legal do acompanhamento das entregas (por
     exemplo, a execução do contrato com o entregador ou o consentimento). Em qualquer caso, o
     aplicativo só começa a coletar a localização depois que você aceita na tela "Localização
-    durante a rota", e você pode desligá-la a qualquer momento pelo botão "Desligar localização".
-    Se você não aceitar ou desligar, o aplicativo continua mostrando a rota e permite marcar as
-    entregas. Apenas a loja deixa de ver a sua localização.
+    durante a rota". Você pode desligá-la na rota atual pelo botão "Desligar localização" ou
+    retirar o aceite de todas as lojas pelo link "Retirar aceite de localização", no rodapé do
+    aplicativo. Se você não aceitar ou desligar, o aplicativo continua mostrando a rota e permite
+    marcar as entregas. A loja deixa de receber novas posições, e a última posição enviada
+    continua aparecendo para ela, com o horário, até a rota terminar.
   </p>
 
   <h2>5. Com quem os dados são compartilhados</h2>
@@ -136,8 +156,10 @@
     <li>
       <strong>Google (Firebase Cloud Messaging)</strong>, prestador de serviço que entrega a
       notificação de rota nova. Ele recebe os identificadores de notificação e de instalação, o
-      texto do aviso (nome da loja e quantidade de entregas) e o link da rota. Não recebe a sua
-      localização.
+      texto do aviso (nome da loja e quantidade de entregas) e o link da rota. A LAD não envia a
+      sua localização ao Google. A leitura da posição usa os serviços de localização do Android
+      (Google Play Services) do próprio aparelho, que seguem as configurações de localização do
+      seu celular.
     </li>
     <li>
       <strong>Amazon Web Services</strong>, prestador de serviço que hospeda o servidor e o banco de
@@ -154,45 +176,52 @@
   <h2>6. Transferência internacional</h2>
   <p>
     Os servidores da Amazon Web Services usados pelo LadFood e a infraestrutura do Google ficam
-    nos Estados Unidos. Os dados são transferidos para lá somente para a execução do serviço
-    contratado pela loja, com as medidas de segurança e as obrigações contratuais desses
-    prestadores, conforme o art. 33 da LGPD.
+    nos Estados Unidos, e o serviço de mapas do OpenStreetMap fica no Reino Unido. Os dados vão
+    para esses países somente para executar o serviço contratado pela loja, com as medidas de
+    segurança e as obrigações contratuais desses prestadores, nas hipóteses do art. 33 da LGPD.
   </p>
 
   <h2>7. Por quanto tempo os dados são mantidos</h2>
   <ul>
     <li>
       <strong>Histórico de posições e última posição no servidor LadFood:</strong> apagados
-      automaticamente depois de 30 dias.
+      automaticamente depois de 30 dias da leitura.
     </li>
     <li>
       <strong>Sistema da loja:</strong> a última posição informada fica registrada junto com a rota
       no sistema instalado na loja, que define por quanto tempo guarda o seu histórico de rotas.
     </li>
     <li>
-      <strong>Rotas e registro das entregas:</strong> mantidos no histórico da loja enquanto ela usa
-      o sistema LadFood, ou até ela pedir a exclusão, respeitadas as obrigações legais.
+      <strong>Rotas e registro das entregas</strong> (paradas, marcações, motivos digitados e o seu
+      nome e telefone na rota): guardados no servidor LadFood, sem exclusão automática, enquanto a
+      loja usar o sistema ou até ela pedir a exclusão, respeitadas as obrigações legais. Depois
+      que o link expira, ele deixa de aceitar marcações e posições, mas continua mostrando a rota.
     </li>
     <li>
-      <strong>Identificadores de notificação:</strong> apagados quando o Firebase informa que
-      deixaram de valer (por exemplo, depois que o aplicativo é desinstalado) ou a seu pedido.
+      <strong>Token de notificações:</strong> o aplicativo o renova a cada rota. Ele é apagado
+      depois de 90 dias sem uso, quando o Firebase recusa uma notificação por token inválido (por
+      exemplo, depois que o aplicativo é desinstalado) ou a seu pedido.
     </li>
     <li>
       <strong>Registros técnicos de acesso:</strong> pelo tempo necessário para segurança e
-      diagnóstico.
+      diagnóstico, respeitado o prazo exigido pelo art. 15 do Marco Civil da Internet (Lei nº
+      12.965/2014).
     </li>
     <li>
       <strong>No aparelho:</strong> o link da rota é apagado quando você fecha a rota. O aceite
-      permanece até você limpar os dados do aplicativo ou desinstalá-lo.
+      permanece até você retirá-lo pelo rodapé do aplicativo, limpar os dados do aplicativo ou
+      desinstalá-lo.
     </li>
   </ul>
 
   <h2>8. Segurança</h2>
   <p>
-    O aplicativo se comunica com o servidor LadFood por conexão criptografada (HTTPS). Cada rota
-    é acessada por um link com código aleatório, e o servidor limita tentativas de adivinhar esses
-    links. O acesso aos dados no servidor é restrito à loja responsável pela rota e, quando
-    necessário para suporte, à equipe da LAD.
+    O aplicativo publicado na Google Play se comunica com o servidor LadFood somente por conexão
+    criptografada (HTTPS). Cada rota é acessada por um link com código aleatório e difícil de
+    adivinhar, e o servidor limita tentativas de acesso com códigos inválidos. Quem tiver o link
+    consegue ver os dados da rota, por isso ele deve ser enviado somente ao entregador e não deve
+    ser repassado. A posição do entregador é exibida somente no sistema da loja responsável pela
+    rota e, quando necessário para suporte, à equipe da LAD.
   </p>
 
   <h2>9. Seus direitos</h2>
@@ -205,7 +234,8 @@
     <li>eliminação dos dados tratados com base no consentimento;</li>
     <li>informação sobre com quem seus dados foram compartilhados;</li>
     <li>informação sobre a possibilidade de não consentir e suas consequências (seção 4);</li>
-    <li>revogação do consentimento, a qualquer momento (desligando a localização no aplicativo ou pelo e-mail abaixo).</li>
+    <li>revogação do consentimento, a qualquer momento: pelo link "Retirar aceite de localização" no rodapé do aplicativo, retirando a permissão de localização nas configurações do Android ou pelo e-mail abaixo (o botão "Desligar localização" vale só para a rota atual);</li>
+    <li>oposição a tratamento feito com base em outra hipótese legal que não o consentimento, em caso de descumprimento da LGPD.</li>
   </ul>
   <p>
     Você pode fazer o pedido à loja para a qual faz as entregas, que é a controladora, ou à LAD
@@ -234,7 +264,8 @@
   <h2>12. Contato e canal de privacidade</h2>
   <p>
     Lad Sistemas Software LTDA<br />
-    E-mail: <a href="mailto:contato@ladsistemas.com.br">contato@ladsistemas.com.br</a>
+    E-mail: <a href="mailto:contato@ladsistemas.com.br">contato@ladsistemas.com.br</a><br />
+    Este é o canal de comunicação da LAD com os titulares de dados e com a ANPD.
   </p>
 </body>
 </html>
